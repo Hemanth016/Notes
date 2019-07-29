@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+{%load staticfiles%}
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="{% static "css/demo.css"%}">
+
+</head>
+<body>
+  <div class="header">
+      <p class="serv">Service</p>
+  </div>
+  <section>
+  <div class="header1">
+    <b>Notes</b>
+    <button class="left" onclick="rhow()">&#9776;</button>
+    <div  id="summ" class="summary" >
+      <div class="notes">
+        <h2>Summaries</h2>
+        <p class="not">58</p>
+        <p>notes</p>
+
+      </div>
+      <div class="notes">
+        <div class="lup">
+        <p>last updated</p>
+        <p style="color: blue;">25-85-5302</p>
+
+        </div>
+        <div class="lup">
+        <p>last note updated</p>
+        <p style="color: blue;">25-85-5302 </p>
+
+        </div>
+      </div>
+
+    </div>
+    <button class="left plus" onclick="show()">+</button>
+      </div>
+      <!-- form -->
+      <div id="form" class="form-box">
+        <p>Create or Edit</p>
+
+<!-- arrow-summary -->
+
+   <div class="form-arrow"></div>
+
+      <form action="" method="post">
+          {% csrf_token %}
+        <div class="form1">
+          <div class="fm1">
+          <label for="title">Title</label><br>
+          <input class="title" type="text" required placeholder="Some name for my note!">
+          </div>
+          <div class="fm2">
+              <label for="edit" style="color: white;">Editable?&nbsp;&nbsp;&nbsp;&nbsp;</label>
+              <input type="checkbox" style="width: 15px;height:15px;" > <label style="color: white;">Yes</label>
+          </div>
+      </div>
+      <div class="form2">
+          <div class="fm1">
+        <label for="Text">Text</label><br>
+        <textarea name="text" placeholder="Some note text!"></textarea>
+        </div>
+        <div class="fm2"></div>
+        <input type="submit" value="Save">
+      </div>
+      </div>
+      </form>
+    </div>
+
+    <div class="adc">
+      <label>Title</label>
+      <label style="float: right;margin-right:20px;">Time Updaed</label>
+
+    </div>
+<!-- Accordion -->
+<button class="accordion">Section 1 <label style="float: right;margin-right:20px;">2-5-20126</label></button>
+
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<button class="accordion">Section 2</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+
+<button class="accordion">Section 3</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</section>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+
+function show(){
+  var s = document.getElementById("form");
+  if (s.style.display === "none"){
+    s.style.display = "flex";}
+    else{
+      s.style.display = "none";
+  }
+}
+function rhow(){
+  var r = document.getElementById("summ");
+  if (r.style.display === "none"){
+    r.style.display = "flex";}
+    else{
+      r.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
